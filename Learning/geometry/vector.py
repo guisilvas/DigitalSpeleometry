@@ -20,12 +20,12 @@ class Vector:
         return length ** 0.5
     
     def check_compatible(self, other):
-        if not isinstance(other, Point):
-            raise TypeError("Must be a point.")
+        if not isinstance(other, Vector):
+            raise TypeError("Must be a vector.")
         if self.has_diff_dim(other):
             raise ValueError("Incompatible dimension.")
 
-    def dimen_diff_of(self, other):
+    def has_diff_dim(self, other):
         return len(self.coord) != len(other.coord)
 
     def significant_coord(self, limit):
@@ -50,13 +50,15 @@ class Vector:
         return Vector(coord)
 
     def scalar_mult(self, x):
+        if not isinstace(x, Read):
+            raise TypeError("Scalar must be a real number.")
         coord = []
         for value in self.coord:
             coord.append(x * value)
         return Vector(coord)
     
     def dot_prod(self, other):
-        if self.dimen_diff_of(other):
+        self.check_compatible(other):
         dot = 0.0
         for i in range(len(self.coord)):
             dot += self.coord[i] * other.coord[i]
