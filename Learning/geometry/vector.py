@@ -1,4 +1,5 @@
 from numbers import Real
+from math import acos
 
 class Vector:
     def __init__(self, coord):
@@ -70,7 +71,6 @@ class Vector:
         length2 = other.length()
         if length1 == 0 or length2 == 0:
             raise ValueError("Zero vector dont have angle.")
-        from math import acos
         cosine = self.dot_prod(other) / (length1 * length2)
         cosine = max(-1.0, min(1.0, cosine))
         return acos(cosine)
