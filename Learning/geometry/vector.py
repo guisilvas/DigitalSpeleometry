@@ -36,7 +36,7 @@ class Vector:
                 coord.append(value)
         return Vector(coord)
 
-    def difference(self, other):
+    def diff(self, other):
         self.check_compatible(other)
         coord = []
         for i in range(len(self.coord)):
