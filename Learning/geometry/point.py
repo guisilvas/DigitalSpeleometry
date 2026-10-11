@@ -13,8 +13,8 @@ class Point:
     def __repr__(self):
         return f"{self.coord}"
 
-    def check_compatible(other):
-        if not instance(other, point):
+    def check_compatible(self, other):
+        if not instance(other, Point):
             raise TypeError("Must be a point.")
         if self.has_diff_dim(other):
             raise ValueError("Incompatible dimension.")
@@ -40,17 +40,15 @@ class Point:
         return Point(coord)
 
     def sum(self, other):
-        if self.check_compatible(other):
-            raise ValueError("Incompatible dimension.")
+        self.check_compatible(other):
         coord = []
         for i in range(len(self.coord)):
             coord.append(self.coord[i] + other.coord[i])
         return Point(coord)
 
     def euclidean_dist_to(self, other):
+        self.check_compatible(other):
         distance = 0.0
-        if self.check_compatible(other):
-            raise ValueError("Incompatible dimension.")
         for i in range(len(self.coord)):
             distance += (self.coord[i] - other.coord[i]) ** 2
         return distance ** 0.5
