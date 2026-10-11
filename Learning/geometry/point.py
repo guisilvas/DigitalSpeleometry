@@ -14,7 +14,7 @@ class Point:
         return f"{self.coord}"
 
     def check_compatible(self, other):
-        if not instance(other, Point):
+        if not isinstance(other, Point):
             raise TypeError("Must be a point.")
         if self.has_diff_dim(other):
             raise ValueError("Incompatible dimension.")
@@ -32,28 +32,30 @@ class Point:
         return Point(coord)
 
     def diff(self, other):
-        if self.check_compatible(other):
-            raise ValueError("Incompatible dimension.")
+        self.check_compatible(other)
         coord = []
         for i in range(len(self.coord)):
             coord.append(self.coord[i] - other.coord[i])
         return Point(coord)
 
     def sum(self, other):
-        self.check_compatible(other):
+        self.check_compatible(other)
         coord = []
         for i in range(len(self.coord)):
             coord.append(self.coord[i] + other.coord[i])
         return Point(coord)
 
     def euclidean_dist_to(self, other):
-        self.check_compatible(other):
+        self.check_compatible(other)
         distance = 0.0
         for i in range(len(self.coord)):
             distance += (self.coord[i] - other.coord[i]) ** 2
         return distance ** 0.5
 
     def vector_to(self, other):
+        self.check_compatible(other)
+        from vector import Vector
+        coord = []
         for i in range(len(self.coord)):
             coord.append(other.coord[i] - self.coord[i])
         return Vector(coord)
