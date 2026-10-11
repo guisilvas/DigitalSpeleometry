@@ -25,7 +25,7 @@ class Point:
                 coord.append(0)
         return Point(coord)
 
-    def minus(self, other):
+    def diff(self, other):
         if self.has_diff_dim(other):
             raise ValueError("Incompatible dimension.")
         coord = []
@@ -33,7 +33,7 @@ class Point:
             coord.append(self.coord[i] - other.coord[i])
         return Point(coord)
 
-    def plus(self, other):
+    def sum(self, other):
         if self.has_diff_dim(other):
             raise ValueError("Incompatible dimension.")
         coord = []
@@ -48,3 +48,8 @@ class Point:
         for i in range(len(self.coord)):
             distance += (self.coord[i] - other.coord[i]) ** 2
         return distance ** 0.5
+
+    def vector_to(self, other):
+        for i in range(len(self.coord)):
+            coord.append(other.coord[i] - self.coord[i])
+        return Vector(coord)
