@@ -18,6 +18,12 @@ class Vector:
         for value in self.coord:
             length += value ** 2
         return length ** 0.5
+    
+    def check_compatible(self, other):
+        if not isinstance(other, Point):
+            raise TypeError("Must be a point.")
+        if self.has_diff_dim(other):
+            raise ValueError("Incompatible dimension.")
 
     def dimen_diff_of(self, other):
         return len(self.coord) != len(other.coord)
@@ -30,16 +36,14 @@ class Vector:
         return Vector(coord)
 
     def difference(self, other):
-        if self.dimen_diff_of(other):
-            raise ValueError("Incompatible dimension.")
+        self.check_compatible(other)
         coord = []
         for i in range(len(self.coord)):
             coord.append(self.coord[i] - other.coord[i])
         return Vector(coord)
 
     def sum(self, other):
-        if self.dimen_diff_of(other):
-            raise ValueError("Incompatible dimension.")
+        self.check_compatible(other)
         coord = []
         for i in range(len(self.coord)):
             coord.append(self.coord[i] + other.coord[i])
@@ -53,16 +57,14 @@ class Vector:
     
     def dot_prod(self, other):
         if self.dimen_diff_of(other):
-            raise ValueError("Incompatible dimension.")
         dot = 0.0
         for i in range(len(self.coord)):
             dot += self.coord[i] * other.coord[i]
         return dot
 
     def angle_between(self, other):
-        if dimen_diff_of(self, other):
-            raise ValueError("Incompatible dimension.")
-        length1 = self.length(), length2 = other.length()
+        self.check_compatible(other)
+        length1 = self.length()
+        length2 = other.length()
+        from math import acos
         return acos(self.dot_prod(other) / (length1 * length2))
-
-
