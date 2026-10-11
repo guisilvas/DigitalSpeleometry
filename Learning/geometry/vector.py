@@ -6,9 +6,9 @@ class Vector:
         if len(coord) == 0:
             raise ValueError("Dimension invalid.")
         for value in coord:
-            if not isinstance(value, Real):
+            if isinstance(value, bool) or not isinstance(value, Real):
                 raise TypeError("Coordinates must be numeric.")
-        self.coord = tuple(coord)
+        self.coord = coord
 
     def __repr__(self):
         return str(self.coord)
@@ -59,20 +59,10 @@ class Vector:
             dot += self.coord[i] * other.coord[i]
         return dot
 
-    def cross_prod(self, other):
-        if self.dimen_diff_of(other):
-            raise ValueError("Incompatible dimension.")
-        coord = []
-        
-        return Vector(coord)
-
     def angle_between(self, other):
         if dimen_diff_of(self, other):
             raise ValueError("Incompatible dimension.")
-        sum1 = 0.0, length1 = self.length(), sum2 = 0.0, length2 = other.length()
-        for i in range(len(self.coord)):
-            sum1 += self.coord[i] / length1
-            sum2 += other.coord[i] / length2
-        return cos(sum1 * sum2) ** -1
+        length1 = self.length(), length2 = other.length()
+        return acos(self.dot_prod(other) / (length1 * length2))
 
 
