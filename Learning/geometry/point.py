@@ -6,12 +6,18 @@ class Point:
         if len(coord) == 0:
             raise ValueError("Dimension invalid.")
         for value in coord:
-            if not isinstance(value, Real):
+            if isinstance(value, bool) or not isinstance(value, Real):
                 raise TypeError("Coordinates must be numeric.")
-        self.coord = tuple(coord)
+        self.coord = coord
 
     def __repr__(self):
         return f"{self.coord}"
+
+    def check_compatible(other):
+        if not instance(other, point):
+            raise TypeError("Must be a point.")
+        if self.has_diff_dim(other):
+            raise ValueError("Incompatible dimension.")
 
     def has_diff_dim(self, other):
         return len(self.coord) != len(other.coord)
@@ -26,7 +32,7 @@ class Point:
         return Point(coord)
 
     def diff(self, other):
-        if self.has_diff_dim(other):
+        if self.check_compatible(other):
             raise ValueError("Incompatible dimension.")
         coord = []
         for i in range(len(self.coord)):
@@ -34,7 +40,7 @@ class Point:
         return Point(coord)
 
     def sum(self, other):
-        if self.has_diff_dim(other):
+        if self.check_compatible(other):
             raise ValueError("Incompatible dimension.")
         coord = []
         for i in range(len(self.coord)):
@@ -43,7 +49,7 @@ class Point:
 
     def euclidean_dist_to(self, other):
         distance = 0.0
-        if self.has_diff_dim(other):
+        if self.check_compatible(other):
             raise ValueError("Incompatible dimension.")
         for i in range(len(self.coord)):
             distance += (self.coord[i] - other.coord[i]) ** 2
