@@ -50,7 +50,7 @@ class Vector:
         return Vector(coord)
 
     def scalar_mult(self, x):
-        if isinstance(x, bool) or not isinstace(x, Real    ):
+        if isinstance(x, bool) or not isinstace(x, Real):
             raise TypeError("Scalar must be a real number.")
         coord = []
         for value in self.coord:
