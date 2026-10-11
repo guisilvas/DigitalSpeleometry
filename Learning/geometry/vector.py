@@ -50,7 +50,7 @@ class Vector:
         return Vector(coord)
 
     def scalar_mult(self, x):
-        if not isinstace(x, Read):
+        if isinstance(x, bool) or not isinstace(x, Real    ):
             raise TypeError("Scalar must be a real number.")
         coord = []
         for value in self.coord:
@@ -58,7 +58,7 @@ class Vector:
         return Vector(coord)
     
     def dot_prod(self, other):
-        self.check_compatible(other):
+        self.check_compatible(other)
         dot = 0.0
         for i in range(len(self.coord)):
             dot += self.coord[i] * other.coord[i]
@@ -68,5 +68,7 @@ class Vector:
         self.check_compatible(other)
         length1 = self.length()
         length2 = other.length()
+        if length1() == 0 or length2() == 0:
+            raise ValueError("Zero vector dont have angle.")
         from math import acos
         return acos(self.dot_prod(other) / (length1 * length2))
