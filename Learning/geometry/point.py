@@ -2,6 +2,7 @@ from numbers import Real
 
 class Point:
     def __init__(self, coord):
+        coord = tuple(coord)
         if len(coord) == 0:
             raise ValueError("Dimension invalid.")
         for value in coord:
@@ -20,6 +21,8 @@ class Point:
         for value in self.coord:
             if value >= limit:
                 coord.append(value)
+            else:
+                coord.append(0)
         return Point(coord)
 
     def minus(self, other):
