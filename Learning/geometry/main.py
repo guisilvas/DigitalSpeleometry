@@ -13,5 +13,5 @@ print("c = b + a = {p4}".format(p4 = p4))
 p5 = Point([3.8, 5.0, 6.3])
 print("p5 = {a}".format(a = [p5]))
 
-p6 = p5.filter_coord(20.0)
+p6 = p5.filter_coord(4.0)
 print("Point without coords lower than 4.0, p6 = {a}".format(a = [p6]))

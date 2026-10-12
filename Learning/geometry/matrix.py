@@ -1,4 +1,3 @@
-from numbers import Real
 from vector import Vector
 
 class Matrix:
@@ -42,13 +41,6 @@ class Matrix:
         if self.has_diff_col_row(other):
             raise ValueError("Incompatible dimension.")
 
-    def significant_coord(self, limit):
-        coord = []
-        for value in self.coord:
-            if value >= limit:
-                coord.append(value)
-        return Vector(coord)
-
     def diff(self, other):
         self.check_sum_compatible(other)
         result_rows = []
@@ -63,4 +55,16 @@ class Matrix:
         for i in range(self.n_rows()):
             row = self.rows[i].sum(other.rows[i])
             result_rows.append(row.coord)
+        return Matrix(result_rows)
+
+    def scalar_mult(self, x):
+        result_rows = []
+        for i in range(self.n_rows()):
+            row = self.rows[i].scalar_mult(x)
+            result_rows.append(row.coord)
+        return Matrix(result_rows)
+
+    def inverse(self):
+        result_rows = []
+        
         return Matrix(result_rows)
