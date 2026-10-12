@@ -31,7 +31,7 @@ class Point:
         if self.has_diff_dim(other):
             raise ValueError("Incompatible dimension.")
 
-    # Calc euclidean dim with other point
+    # Calc euclidean dist to other point
     def euclidean_dist_to(self, other):
         self.check_compatible(other)
         distance = 0.0
@@ -39,7 +39,7 @@ class Point:
             distance += (self.coord[i] - other.coord[i]) ** 2
         return distance ** 0.5
 
-    # Calc medium point to other point
+    # Calc midpoint between other point
     def mid_point(self, other):
         self.check_compatible(other)
         coord = []
@@ -56,7 +56,7 @@ class Point:
             coord.append(other.coord[i] - self.coord[i])
         return Vector(coord)
 
-    # Verify if is equal to other point
+    # Check whether is equal to other point
     def equal_to(self, other):
         self.check_compatible(other)
-        return self.coord = other.coord
+        return self.coord == other.coord
