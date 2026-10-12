@@ -22,29 +22,6 @@ class Point:
     def has_diff_dim(self, other):
         return len(self.coord) != len(other.coord)
 
-    def filter_coord(self, limit):
-        coord = []
-        for value in self.coord:
-            if value >= limit:
-                coord.append(value)
-            else:
-                coord.append(0)
-        return Point(coord)
-
-    def diff(self, other):
-        self.check_compatible(other)
-        coord = []
-        for i in range(len(self.coord)):
-            coord.append(other.coord[i] - self.coord[i])
-        return Point(coord)
-
-    def sum(self, other):
-        self.check_compatible(other)
-        coord = []
-        for i in range(len(self.coord)):
-            coord.append(self.coord[i] + other.coord[i])
-        return Point(coord)
-
     def euclidean_dist_to(self, other):
         self.check_compatible(other)
         distance = 0.0
