@@ -60,3 +60,23 @@ class Point:
     def equal_to(self, other):
         self.check_compatible(other)
         return self.coord == other.coord
+
+    # Translate by vector
+    def translate(self, vector):
+        from vector import Vector
+        if not isinstance(vector, Vector):
+            raise TypeError("Must be a vector.")
+        if self.dim != len(vector.coord):
+            raise ValueError("Incompatible dimension.")
+        coord = []
+        for i in range(self.dim):
+            coord.append(self.coord[i] + vector.coord[i])
+        return Point(coord)
+
+    # Squared dist to other point
+    def squared_dist_to(self, other):
+        self.check_compatible(other)
+        distance_squared = 0.0
+        for i in range(self.dim):
+            distance_squared += (self.coord[i] - other.coord[i]) ** 2
+        return distance_squared
