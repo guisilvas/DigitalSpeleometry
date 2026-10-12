@@ -44,6 +44,8 @@ class Vector:
         for value in self.coord:
             if value >= limit:
                 coord.append(value)
+            else:
+                coord.appen(0)
         return Vector(coord)
 
     # Difference to other vector
