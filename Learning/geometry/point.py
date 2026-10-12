@@ -59,8 +59,4 @@ class Point:
     # Verify if is equal to other point
     def equal_to(self, other):
         self.check_compatible(other)
-        equal = False
-        for i in range(self.dim):
-            if self.coord[i] != other.coord[i]:
-                equal = True
-        return equal
+        return self.coord = other.coord
