@@ -7,9 +7,7 @@ Learning Digital Speleometry
 
 - 3D analytic geometry: points, vectors, distances, lines, and planes | [MIT — Multivariable Calculus](https://ocw.mit.edu/courses/18-02sc-multivariable-calculus-fall-2010/) |
 - Linear algebra: matrices, rotations, linear transformations, eigenvalues, and SVD | [MIT — Linear Algebra](https://ocw.mit.edu/courses/18-06sc-linear-algebra-fall-2011/) |
-- Multivariable calculus: partial derivatives, gradients, and optimization | [MIT — Multivariable Calculus](https://ocw.mit.edu/courses/18-02sc-multivariable-calculus-fall-2010/) |
 - Probability and statistics: mean, variance, covariance, noise, and regression | [MIT — Probability and Statistics](https://ocw.mit.edu/courses/18-05-introduction-to-probability-and-statistics-spring-2022/) |
-- Numerical methods and least squares | [MIT — Linear Algebra](https://ocw.mit.edu/courses/18-06sc-linear-algebra-fall-2011/) |
 - Metrology and uncertainty propagation | [NIST — Measurement Uncertainty](https://www.nist.gov/itl/sed/topic-areas/measurement-uncertainty) |
 
 ---
