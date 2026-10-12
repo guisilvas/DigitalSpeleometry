@@ -35,7 +35,7 @@ class Point:
         self.check_compatible(other)
         coord = []
         for i in range(len(self.coord)):
-            coord.append(self.coord[i] - other.coord[i])
+            coord.append(other.coord[i] - self.coord[i])
         return Point(coord)
 
     def sum(self, other):
@@ -51,6 +51,13 @@ class Point:
         for i in range(len(self.coord)):
             distance += (self.coord[i] - other.coord[i]) ** 2
         return distance ** 0.5
+
+    def mid_point(self, other):
+        self.check_compatible(other)
+        coord = []
+        for i in range(len(self.coord)):
+            coord.append((other.coord[i] + self.coord[i]) / 2)
+        return Point(coord)
 
     def vector_to(self, other):
         self.check_compatible(other)
