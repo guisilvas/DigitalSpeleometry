@@ -11,7 +11,7 @@ class Point:
         self.coord = coord
 
     def __repr__(self):
-        return f"{self.coord}"
+        return f"Point{self.coord}"
 
     def check_compatible(self, other):
         if not isinstance(other, Point):
